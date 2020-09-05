@@ -8,20 +8,23 @@
 
 import Foundation
 
-class NetworkService {
+final class NetworkService {
     
-    func requestNewSession(urlString: String, token : String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func request(httpBody : String, completion: @escaping (Result<Data, Error>) -> Void) {
         
-        var request = URLRequest(url: URL(string: urlString)!)
-
+        let token = "rkomXHX-yr-Qxsnfn2"
+        let url = "https://bnet.i-partner.ru/testAPI/"
+        
+        var request = URLRequest(url: URL(string: url)!)
+        
         request.setValue(token, forHTTPHeaderField: "token")
         
         request.httpMethod = "POST"
-        request.httpBody = "a=new_session".data(using: .utf8)!
+        request.httpBody = "\(httpBody)".data(using: .utf8)!
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-
-       URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+           
             DispatchQueue.main.async {
                 if let error = error {
                     completion(.failure(error))
@@ -32,54 +35,4 @@ class NetworkService {
             }
         }.resume()
     }
-    
-    
-    func requestGetEntries(urlString: String, token : String, session: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        var request = URLRequest(url: URL(string: urlString)!)
-        
-        request.setValue(token, forHTTPHeaderField: "token")
-        request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        let body = "a=get_entries&session=\(session)".data(using: .utf8)
-        request.httpBody = body
-
-       URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            DispatchQueue.main.async {
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                guard let data = data else { return }
-                completion(.success(data))
-            }
-        }.resume()
-    }
-    
-    func requestAddEntry(urlString: String, token : String, session: String, body : String, completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        var request = URLRequest(url: URL(string: urlString)!)
-        
-        request.setValue(token, forHTTPHeaderField: "token")
-        request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-
-       let body = "a=add_entry&session=\(session)&body=\(body)".data(using: .utf8)
-       request.httpBody = body
-        
-       URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            DispatchQueue.main.async {
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                guard let data = data else { return }
-                completion(.success(data))
-            }
-        }.resume()
-    }
-    
 }

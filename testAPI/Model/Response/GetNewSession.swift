@@ -8,40 +8,34 @@
 
 import Foundation
 
-
 final class GetNewSession : Decodable{
     
-    var status : Int
-    var data : SessionValue
+    let status : Int?
+    let data : SessionValue?
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case status
         case data
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
         status = try container.decode(Int.self, forKey: .status)
         data = try container.decode(SessionValue.self, forKey: .data)
     }
-
 }
 
 final class SessionValue : Decodable {
     
     let session : String
- 
-       enum CodingKeys: String, CodingKey {
-           case session
-      
-       }
-      
-       init(from decoder: Decoder) throws {
-           let container = try decoder.container(keyedBy: CodingKeys.self)
-           
-           session = try container.decode(String.self, forKey: .session)
-
-       }
+    
+    enum CodingKeys: String, CodingKey {
+        case session
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        session = try container.decode(String.self, forKey: .session)
+    }
 }
 

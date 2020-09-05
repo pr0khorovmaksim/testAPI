@@ -19,11 +19,9 @@
 		B558BD9124E14E4200AA4626 /* GetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9024E14E4200AA4626 /* GetEntries.swift */; };
 		B558BD9324E14F3D00AA4626 /* GetAddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9224E14F3D00AA4626 /* GetAddEntry.swift */; };
 		B558BD9624E1505200AA4626 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9524E1505200AA4626 /* NetworkService.swift */; };
-		B558BD9824E1505C00AA4626 /* NetworkNewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9724E1505C00AA4626 /* NetworkNewSession.swift */; };
-		B558BD9A24E1540900AA4626 /* NetworkGetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9924E1540900AA4626 /* NetworkGetEntries.swift */; };
-		B558BD9C24E1DD8A00AA4626 /* NetworkGetAddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9B24E1DD8A00AA4626 /* NetworkGetAddEntry.swift */; };
 		B558BD9F24E298DE00AA4626 /* ListOfEntriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9E24E298DE00AA4626 /* ListOfEntriesTableViewCell.swift */; };
 		B558BDA124E3F45500AA4626 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BDA024E3F45500AA4626 /* Reachability.swift */; };
+		B5D46E312503D22000421FBE /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D46E302503D22000421FBE /* NetworkDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +39,9 @@
 		B558BD9024E14E4200AA4626 /* GetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEntries.swift; sourceTree = "<group>"; };
 		B558BD9224E14F3D00AA4626 /* GetAddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddEntry.swift; sourceTree = "<group>"; };
 		B558BD9524E1505200AA4626 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		B558BD9724E1505C00AA4626 /* NetworkNewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkNewSession.swift; sourceTree = "<group>"; };
-		B558BD9924E1540900AA4626 /* NetworkGetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGetEntries.swift; sourceTree = "<group>"; };
-		B558BD9B24E1DD8A00AA4626 /* NetworkGetAddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGetAddEntry.swift; sourceTree = "<group>"; };
 		B558BD9E24E298DE00AA4626 /* ListOfEntriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEntriesTableViewCell.swift; sourceTree = "<group>"; };
 		B558BDA024E3F45500AA4626 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		B5D46E302503D22000421FBE /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B558BD9524E1505200AA4626 /* NetworkService.swift */,
-				B558BD9724E1505C00AA4626 /* NetworkNewSession.swift */,
-				B558BD9924E1540900AA4626 /* NetworkGetEntries.swift */,
-				B558BD9B24E1DD8A00AA4626 /* NetworkGetAddEntry.swift */,
+				B5D46E302503D22000421FBE /* NetworkDataFetcher.swift */,
 				B558BDA024E3F45500AA4626 /* Reachability.swift */,
 			);
 			path = Network;
@@ -217,14 +211,12 @@
 				B558BD7424E144DD00AA4626 /* AppDelegate.swift in Sources */,
 				B558BD8A24E1490600AA4626 /* ViewFullEntryViewController.swift in Sources */,
 				B558BD8E24E14CE000AA4626 /* GetNewSession.swift in Sources */,
-				B558BD9C24E1DD8A00AA4626 /* NetworkGetAddEntry.swift in Sources */,
-				B558BD9824E1505C00AA4626 /* NetworkNewSession.swift in Sources */,
 				B558BD9624E1505200AA4626 /* NetworkService.swift in Sources */,
+				B5D46E312503D22000421FBE /* NetworkDataFetcher.swift in Sources */,
 				B558BD9124E14E4200AA4626 /* GetEntries.swift in Sources */,
 				B558BD7624E144DD00AA4626 /* SceneDelegate.swift in Sources */,
 				B558BD8824E1489600AA4626 /* ListOfEntriesTableViewController.swift in Sources */,
 				B558BD9324E14F3D00AA4626 /* GetAddEntry.swift in Sources */,
-				B558BD9A24E1540900AA4626 /* NetworkGetEntries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,27 +8,14 @@
 
 import UIKit
 
-class ViewFullEntryViewController: UIViewController {
+final class ViewFullEntryViewController: UIViewController {
     
     var entry : String?
-
+    
     @IBOutlet weak var entryLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         entryLabel.text = entry
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
