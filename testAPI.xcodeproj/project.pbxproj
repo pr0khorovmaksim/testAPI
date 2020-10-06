@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B54895AD252C93F20088E2A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54895AC252C93F20088E2A2 /* Constants.swift */; };
 		B558BD7424E144DD00AA4626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD7324E144DD00AA4626 /* AppDelegate.swift */; };
 		B558BD7624E144DD00AA4626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD7524E144DD00AA4626 /* SceneDelegate.swift */; };
 		B558BD7824E144DD00AA4626 /* CreateEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD7724E144DD00AA4626 /* CreateEntryViewController.swift */; };
@@ -14,7 +15,7 @@
 		B558BD7D24E144E100AA4626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B558BD7C24E144E100AA4626 /* Assets.xcassets */; };
 		B558BD8024E144E100AA4626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B558BD7E24E144E100AA4626 /* LaunchScreen.storyboard */; };
 		B558BD8824E1489600AA4626 /* ListOfEntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD8724E1489600AA4626 /* ListOfEntriesTableViewController.swift */; };
-		B558BD8A24E1490600AA4626 /* ViewFullEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD8924E1490600AA4626 /* ViewFullEntryViewController.swift */; };
+		B558BD8A24E1490600AA4626 /* FullEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD8924E1490600AA4626 /* FullEntryViewController.swift */; };
 		B558BD8E24E14CE000AA4626 /* GetNewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD8D24E14CE000AA4626 /* GetNewSession.swift */; };
 		B558BD9124E14E4200AA4626 /* GetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9024E14E4200AA4626 /* GetEntries.swift */; };
 		B558BD9324E14F3D00AA4626 /* GetAddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558BD9224E14F3D00AA4626 /* GetAddEntry.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B54895AC252C93F20088E2A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B558BD7024E144DD00AA4626 /* testAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B558BD7324E144DD00AA4626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B558BD7524E144DD00AA4626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +36,7 @@
 		B558BD7F24E144E100AA4626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B558BD8124E144E100AA4626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B558BD8724E1489600AA4626 /* ListOfEntriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEntriesTableViewController.swift; sourceTree = "<group>"; };
-		B558BD8924E1490600AA4626 /* ViewFullEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFullEntryViewController.swift; sourceTree = "<group>"; };
+		B558BD8924E1490600AA4626 /* FullEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEntryViewController.swift; sourceTree = "<group>"; };
 		B558BD8D24E14CE000AA4626 /* GetNewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewSession.swift; sourceTree = "<group>"; };
 		B558BD9024E14E4200AA4626 /* GetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEntries.swift; sourceTree = "<group>"; };
 		B558BD9224E14F3D00AA4626 /* GetAddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddEntry.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B54895AF252C93F50088E2A2 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B54895AC252C93F20088E2A2 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		B558BD6724E144DD00AA4626 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		B558BD7224E144DD00AA4626 /* testAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B54895AF252C93F50088E2A2 /* Constants */,
 				B558BD7324E144DD00AA4626 /* AppDelegate.swift */,
 				B558BD7524E144DD00AA4626 /* SceneDelegate.swift */,
 				B558BD8C24E14CC500AA4626 /* Model */,
@@ -93,7 +104,7 @@
 			children = (
 				B558BD8724E1489600AA4626 /* ListOfEntriesTableViewController.swift */,
 				B558BD7724E144DD00AA4626 /* CreateEntryViewController.swift */,
-				B558BD8924E1490600AA4626 /* ViewFullEntryViewController.swift */,
+				B558BD8924E1490600AA4626 /* FullEntryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,7 +172,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = maksim;
 				TargetAttributes = {
 					B558BD6F24E144DD00AA4626 = {
@@ -209,9 +220,10 @@
 				B558BD7824E144DD00AA4626 /* CreateEntryViewController.swift in Sources */,
 				B558BD9F24E298DE00AA4626 /* ListOfEntriesTableViewCell.swift in Sources */,
 				B558BD7424E144DD00AA4626 /* AppDelegate.swift in Sources */,
-				B558BD8A24E1490600AA4626 /* ViewFullEntryViewController.swift in Sources */,
+				B558BD8A24E1490600AA4626 /* FullEntryViewController.swift in Sources */,
 				B558BD8E24E14CE000AA4626 /* GetNewSession.swift in Sources */,
 				B558BD9624E1505200AA4626 /* NetworkService.swift in Sources */,
+				B54895AD252C93F20088E2A2 /* Constants.swift in Sources */,
 				B5D46E312503D22000421FBE /* NetworkDataFetcher.swift in Sources */,
 				B558BD9124E14E4200AA4626 /* GetEntries.swift in Sources */,
 				B558BD7624E144DD00AA4626 /* SceneDelegate.swift in Sources */,
@@ -268,6 +280,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -328,6 +341,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -8,12 +8,12 @@
 
 import Foundation
 
-final class GetNewSession : Decodable{
+final class GetNewSession : Codable{
     
     let status : Int?
     let data : SessionValue?
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys : String, CodingKey {
         case status
         case data
     }
@@ -25,11 +25,11 @@ final class GetNewSession : Decodable{
     }
 }
 
-final class SessionValue : Decodable {
+final class SessionValue : Codable {
     
-    let session : String
+    let session : String?
     
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys : String, CodingKey {
         case session
     }
     

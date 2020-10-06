@@ -1,5 +1,5 @@
 //
-//  ViewFullEntryViewController.swift
+//  FullEntryViewController.swift
 //  testAPI
 //
 //  Created by maksim on 10.08.2020.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class ViewFullEntryViewController: UIViewController {
+final class FullEntryViewController: UIViewController {
     
     var entry : String?
     
-    @IBOutlet weak var entryLabel: UILabel!
+    @IBOutlet private weak var entryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

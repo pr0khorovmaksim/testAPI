@@ -10,59 +10,31 @@ import UIKit
 
 final class ListOfEntriesTableViewController: UITableViewController {
     
-    fileprivate let networkDataFetcher = NetworkDataFetcher()
+    fileprivate let networkDataFetcher : NetworkDataFetcher = NetworkDataFetcher()
+    fileprivate let constants : Constants? = Constants()
+    
     fileprivate var getEntries : GetEntries?
     fileprivate var entry : String?
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         Reachability.isConnectedToNetwork { (isConnected) in
             if isConnected {
                 checkSession()
             } else {
-                lostConnect()
+                errorAlert(title : constants?.internetConnetErrorTitle, errorMessage : constants?.internetConnetErrorMessage)
             }
         }
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
     
-    func checkSession(){
-        if UserDefaults.standard.string(forKey: "session") != nil{
-            getEntries(session : UserDefaults.standard.string(forKey: "session")!)
-        }else{
-            newSession()
-            guard UserDefaults.standard.string(forKey: "session") != nil else { return }
-            getEntries(session : UserDefaults.standard.string(forKey: "session")!)
-        }
-    }
-    
-    func newSession(){
-        self.networkDataFetcher.fetchSession(httpBody : "a=new_session") { (getNewSession) in
-            guard let getNewSession = getNewSession else { return }
-            UserDefaults.standard.set(getNewSession.data?.session, forKey: "session")
-        }
-    }
-    
-    func getEntries(session : String){
-        self.networkDataFetcher.fetchEntry(httpBody : "a=get_entries&session=\(session)") { (getEntries) in
-            guard let getEntries = getEntries else { return }
-                self.getEntries = getEntries
-                self.tableView.reloadData()
-        }
-    }
-    
-    @IBAction func createEntry(_ sender: UIBarButtonItem) {
+    @IBAction private func createEntry(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "ListToCreateSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ListToViewSegue"{
-            let navVC = segue.destination as! ViewFullEntryViewController
-            navVC.entry = entry
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,18 +66,56 @@ final class ListOfEntriesTableViewController: UITableViewController {
     
 }
 
-extension ListOfEntriesTableViewController{
+extension ListOfEntriesTableViewController {
     
-    func lostConnect(){
-        let alert = UIAlertController(title: "Ошибка", message: "Отсутствует соединение с сервером!", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Обновить данные", style: UIAlertAction.Style.default, handler: { action in
-            self.checkSession()
-        }))
-        self.present(alert, animated: true, completion: nil)
+    @objc func updateData(refreshControl: UIRefreshControl) {
+        Reachability.isConnectedToNetwork { (isConnected) in
+            if isConnected {
+                checkSession()
+            } else {
+                errorAlert(title : constants?.internetConnetErrorTitle, errorMessage : constants?.internetConnetErrorMessage)
+            }
+        }
+        refreshControl.endRefreshing()
     }
     
-    func errorAlert(errorMessage : String){
-        let alert = UIAlertController(title: "Ошибка", message: "\(errorMessage)", preferredStyle: UIAlertController.Style.alert)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ListToViewSegue"{
+            let navVC = segue.destination as! FullEntryViewController
+            navVC.entry = entry
+        }
+    }
+    
+    private func checkSession(){
+        if UserDefaults.standard.string(forKey: "session") != nil{
+            getEntries(session : UserDefaults.standard.string(forKey: "session")!)
+        }else{
+            newSession()
+            getEntries(session : UserDefaults.standard.string(forKey: "session")!)
+        }
+    }
+    
+    private func newSession(){
+        self.networkDataFetcher.fetchSession(httpBody : "a=new_session") { (getNewSession) in
+            guard let getNewSession = getNewSession else { return }
+            UserDefaults.standard.set(getNewSession.data?.session, forKey: "session")
+        }
+    }
+    
+    private func getEntries<T>(session : T){
+        self.networkDataFetcher.fetchEntry(httpBody : "a=get_entries&session=\(session)") { (getEntries) in
+            guard let getEntries = getEntries else { return }
+            self.getEntries = getEntries
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension ListOfEntriesTableViewController{
+    
+    private func errorAlert(title : String?, errorMessage : String?){
+        let alert = UIAlertController(title: "\(title ?? "Внимание")", message: "\(errorMessage ?? "Ошибка")", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "ОК", style: UIAlertAction.Style.default, handler: { action in }))
         self.present(alert, animated: true, completion: nil)
     }

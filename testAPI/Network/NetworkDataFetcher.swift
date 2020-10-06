@@ -10,13 +10,14 @@ import Foundation
 
 final class NetworkDataFetcher{
     
-    fileprivate let networkService = NetworkService()
+    fileprivate let networkService : NetworkService? = NetworkService()
     
-    func fetchSession(httpBody : String, response: @escaping (GetNewSession?) -> Void) {
-        networkService.request(httpBody: httpBody) { (result) in
+    func fetchSession<T>(httpBody : T, response: @escaping (GetNewSession?) -> Void) {
+        networkService!.request(httpBody: httpBody) { (result) in
             switch result {
             case .success(let data):
                 do {
+                    print("data",String(data: data, encoding: .utf8))
                     let session = try JSONDecoder().decode(GetNewSession.self, from: data)
                     response(session)
                 } catch let jsonError {
@@ -30,12 +31,12 @@ final class NetworkDataFetcher{
         }
     }
     
-   func fetchEntry(httpBody : String, response: @escaping (GetEntries?) -> Void) {
-          networkService.request(httpBody: httpBody) { (result) in
+    func fetchEntry<T>(httpBody : T, response: @escaping (GetEntries?) -> Void) {
+        networkService!.request(httpBody: httpBody) { (result) in
             switch result {
             case .success(let data):
-                print("return",String(data: data, encoding: .utf8))
                 do {
+                    print("data",String(data: data, encoding: .utf8))
                     let entry = try JSONDecoder().decode(GetEntries.self, from: data)
                     response(entry)
                 } catch let jsonError {
@@ -49,21 +50,22 @@ final class NetworkDataFetcher{
         }
     }
     
-    func fetchCreateEntry(httpBody : String, response: @escaping (GetAddEntry?) -> Void) {
-           networkService.request(httpBody: httpBody) { (result) in
-               switch result {
-               case .success(let data):
-                   do {
-                       let entry = try JSONDecoder().decode(GetAddEntry.self, from: data)
-                       response(entry)
-                   } catch let jsonError {
-                       print("Ошибка декодирования JSON \(jsonError)")
-                       response(nil)
-                   }
-               case .failure(let error):
-                   print("Ошибка при запросе данных: \(error.localizedDescription)")
-                   response(nil)
-               }
-           }
-       }
+    func fetchCreateEntry<T>(httpBody : T, response: @escaping (GetAddEntry?) -> Void) {
+        networkService!.request(httpBody: httpBody) { (result) in
+            switch result {
+            case .success(let data):
+                do {
+                    print("data",String(data: data, encoding: .utf8))
+                    let entry = try JSONDecoder().decode(GetAddEntry.self, from: data)
+                    response(entry)
+                } catch let jsonError {
+                    print("Ошибка декодирования JSON \(jsonError)")
+                    response(nil)
+                }
+            case .failure(let error):
+                print("Ошибка при запросе данных: \(error.localizedDescription)")
+                response(nil)
+            }
+        }
+    }
 }

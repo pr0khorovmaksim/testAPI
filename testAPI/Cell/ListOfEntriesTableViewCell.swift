@@ -14,11 +14,4 @@ final class ListOfEntriesTableViewCell: UITableViewCell {
     @IBOutlet weak var daLabel: UILabel!
     @IBOutlet weak var dmLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 }

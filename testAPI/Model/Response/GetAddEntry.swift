@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class GetAddEntry : Decodable{
+final class GetAddEntry : Codable{
     
     let status : Int?
     let data : IdValue?
@@ -25,11 +25,11 @@ final class GetAddEntry : Decodable{
     }
 }
 
-final class IdValue : Decodable{
+final class IdValue : Codable{
     
-    let id : String
+    let id : String?
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys : String, CodingKey {
         case id
     }
     
